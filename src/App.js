@@ -12,11 +12,16 @@ class App extends Component {
       { id: "id-4", name: "Annie Copeland", number: "227-91-26" },
     ],
     filter: "",
-    name: "",
-    number: "",
   };
 
   addContact = (contact) => {
+    const addingContact = this.state.contacts.find(
+      ({ name }) => name.toLowerCase() === contact.name.toLowerCase()
+    );
+    if (addingContact) {
+      alert(`${contact.name} is already in contacts`);
+      return;
+    }
     this.setState((prev) => ({ contacts: [...prev.contacts, contact] }));
   };
 
