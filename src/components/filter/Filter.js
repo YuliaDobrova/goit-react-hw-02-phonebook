@@ -10,7 +10,12 @@ const Filter = ({ value, onFilter }) => {
     <>
       <label className={styles.filterName}>
         Find contacts by name
-        <input type="text" value={value} onFilter={onContactFilter} />
+        <input
+          className={styles.filterInput}
+          type="text"
+          value={value}
+          onChange={onContactFilter}
+        />
       </label>
     </>
   );

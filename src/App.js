@@ -28,7 +28,7 @@ class App extends Component {
 
   filteredContacts = () => {
     const lowerCaseContact = this.state.filter.toLowerCase();
-    return this.state.filter((contact) =>
+    return this.state.contacts.filter((contact) =>
       contact.name.toLowerCase().includes(lowerCaseContact)
     );
   };
@@ -45,8 +45,7 @@ class App extends Component {
         <h2 className="appHeading">Contacts</h2>
         <Filter value={this.state.filter} onFilter={this.onFilter} />
         <ContactList
-          contacts={this.state.contacts}
-          // contacts={this.filteredContacts}
+          contacts={this.filteredContacts()}
           addContact={this.addContact}
           removeContact={this.removeContact}
         />
