@@ -5,7 +5,7 @@ import Filter from "./components/filter/Filter";
 
 class App extends Component {
   state = {
-    contacts: [],
+    contacts: [{ name: "Tanya Petrukhnova", number: "050-699-28-68" }],
     filter: "",
   };
 
@@ -37,10 +37,13 @@ class App extends Component {
   };
 
   filteredContacts = () => {
-    const lowerCaseContact = this.state.filter.toLowerCase();
-    return this.state.contacts.filter((contact) =>
-      contact.name.toLowerCase().includes(lowerCaseContact)
-    );
+    if (this.state.contacts) {
+      const lowerCaseContact = this.state.filter.toLowerCase();
+      return this.state.contacts.filter((contact) =>
+        contact.name.toLowerCase().includes(lowerCaseContact)
+      );
+    }
+    return;
   };
 
   onFilter = (value) => {
