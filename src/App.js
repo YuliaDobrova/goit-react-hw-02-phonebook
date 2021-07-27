@@ -5,19 +5,14 @@ import Filter from "./components/filter/Filter";
 
 class App extends Component {
   state = {
-    contacts: [{ name: "Tanya Petrukhnova", number: "050-699-28-68" }],
+    contacts: [
+      { id: "id-1", name: "Rosie Simpson", number: "459-12-56" },
+      { id: "id-2", name: "Hermione Kline", number: "443-89-12" },
+      { id: "id-3", name: "Eden Clements", number: "645-17-79" },
+      { id: "id-4", name: "Annie Copeland", number: "227-91-26" },
+    ],
     filter: "",
   };
-
-  componentDidMount() {
-    const contacts = JSON.parse(localStorage.getItem("contacts"));
-    this.setState({ contacts: contacts });
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    if (prevState.contacts !== this.state.contacts)
-      localStorage.setItem("contacts", JSON.stringify(this.state.contacts));
-  }
 
   addContact = (contact) => {
     const addingContact = this.state.contacts.find(
@@ -37,13 +32,10 @@ class App extends Component {
   };
 
   filteredContacts = () => {
-    if (this.state.contacts) {
-      const lowerCaseContact = this.state.filter.toLowerCase();
-      return this.state.contacts.filter((contact) =>
-        contact.name.toLowerCase().includes(lowerCaseContact)
-      );
-    }
-    return;
+    const lowerCaseContact = this.state.filter.toLowerCase();
+    return this.state.contacts.filter((contact) =>
+      contact.name.toLowerCase().includes(lowerCaseContact)
+    );
   };
 
   onFilter = (value) => {
